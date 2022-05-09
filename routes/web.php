@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Town;
+use App\Models\Category;
+use App\Models\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home', [
+        'towns' => Town::all(),
+        'categories' => Category::all(),
+        'articles' => Article::all()
+    ]);
 });
