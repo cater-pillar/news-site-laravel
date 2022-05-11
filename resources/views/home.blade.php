@@ -29,7 +29,7 @@
             <div class="main-container">
                 <ul class="nav-list">
                     <li class="nav-item">
-                        <a href='../home/index.php' class='nav-link'>NASLOVNA</a>
+                        <a href='/' class='nav-link'>NASLOVNA</a>
                     </li>
                     @foreach ($towns as $town)
                         <li class="nav-item">
@@ -64,57 +64,59 @@
 
     <div class="main-article">
         <div class="main-article-img">
-            <img src="../neka_fotka">
+            <img src="../images/{{ $articles[0]->photo }}">
         </div>
         <div class="main-article-body">
             <p>
-                Grad ili kategorija.
+                {{ $articles[0]->category->name }}
             </p>
             <h1>
                 <a class="title-color" 
-                   href="#">
-                    Naslov clanka
+                   href="/article/{{ $articles[0]->id }}">
+                    {{ $articles[0]->title }}
                 </a>
             </h1>
             <p class="main-article-abstract">
-                Apstract clanka
+                {{ $articles[0]->extract }}
             </p>
             <div class="breadcrumbs">
-                <a href="#" class="article-link">detaljnije ></a>
-                <a href="#" class="comments-link">
-                    <img class="speech-bubble" src="../images/speech-bubble.png">#
+                <a href="/article/{{ $articles[0]->id }}" class="article-link">detaljnije ></a>
+                <a href="/article/{{ $articles[0]->id }}" class="comments-link">
+                    <img class="speech-bubble" src="../images/speech-bubble.png">{{ $articles[0]->comments->count() }}
                 </a>
             </div>
         </div>
     </div>
     <div class="horizontal-banner-red"></div>
     <ul class="articles-list">
-
+        @foreach ($articles as $index => $article)
+        @if ($index !== 0)
         <li class="articles-list-item">
         <div class="articles-list-img">
-            <img src="../neka_fotka.png">
+            <img src="../images/{{ $article->photo }}">
         </div>
         <div class="articles-list-body">
             <p>
-                Grad ili kategorija
+                {{ $article->category->name }}
             </p>
             <h1>
                 <a class="title-color" 
-                   href="#">
-                    Naslov clanka
+                   href="/article/{{ $article->id }}">
+                   {{ $article->title }}
                 </a>
             </h1>
             <p class="articles-list-abstract">
-                Abstract clanka
+                {{ $article->extract }}
             </p>
             <div class="breadcrumbs">
-                <a href="#" class="article-link">detaljnije ></a>
-                <a href="#" class="comments-link">
-                    <img class="speech-bubble" src="../images/speech-bubble.png">#
+                <a href="/article/{{ $article->id }}" class="article-link">detaljnije ></a>
+                <a href="/article/{{ $article->id }}" class="comments-link">
+                    <img class="speech-bubble" src="../images/speech-bubble.png">{{ $article->comments->count() }}
                 </a>
             </div>
         </div>
-        
+        @endif
+        @endforeach
         </li>
     </ul>
     <div class="horizontal-banner-red"></div>

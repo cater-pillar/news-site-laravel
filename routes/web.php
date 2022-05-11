@@ -23,3 +23,13 @@ Route::get('/', function () {
         'articles' => Article::all()
     ]);
 });
+
+
+Route::get('/article/{id}', function ($id) {
+    return view('article', [
+        'towns' => Town::all(),
+        'categories' => Category::all(),
+        'article' => Article::find($id)
+    ]);
+});
+
