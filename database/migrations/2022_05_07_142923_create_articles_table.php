@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('extract');
             $table->string('photo');
-            $table->string('body');
+            $table->text('body');
             $table->foreignId('category_id')->constrained();
             $table->timestamp('published_at');
             $table->timestamps();
