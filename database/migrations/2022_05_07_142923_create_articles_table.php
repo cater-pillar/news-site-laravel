@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('photo');
             $table->text('body');
             $table->foreignId('category_id')->constrained();
-            $table->timestamp('published_at');
+            
             $table->timestamps();
         });
     }
