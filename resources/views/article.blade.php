@@ -95,14 +95,14 @@
             <img src="../images/speech-bubble-gray.png" alt="user"/>
             Komentari {{ count($article->comments) }} 
         </span>
-        
+    @if(count($article->comments) > 0)
     <ul class="list-comments">
         @foreach($article->comments as $comment)
             <li class="comment-user">
                 <img src="../images/user.png" alt="user"/>
                 <div>
                     <h3>
-                        <?= $comment->user; ?>
+                         {{ $comment->user }} 
                     </h3>
                     <span>{{ $comment->published_at }}</span>
                     <p>
@@ -110,8 +110,9 @@
                     </p>
                 </div>
             </li>    
-        <?php endforeach; ?>
+        @endforeach
     </ul>
+    @endif
     @if(isset($_SESSION['user']))
     <h5 id="comment">
         Pošalji komentar:
