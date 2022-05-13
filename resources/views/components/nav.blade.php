@@ -21,7 +21,7 @@
         <ul class="nav-list">
             @foreach ($categories as $category)
                 <li class="nav-item">
-                    <a href='#' 
+                    <a href="/?category={{ $category->id }}" 
                        class='nav-link'>
                     {{ $category->name }} 
                 </a></li>

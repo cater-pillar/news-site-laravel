@@ -6,6 +6,7 @@
         <div class="breadcrumbs">
             Ovde treba da ide naslov strane.
         </div>
+        @if (count($articles) > 0)
         <div class="main-article">
             <x-article-card :article="$articles[0]" type="main-article" />
         </div>
@@ -19,5 +20,6 @@
                 @endif
             @endforeach
         </ul>
+        @endif
         <div class="horizontal-banner-red"></div>
 </x-layout>

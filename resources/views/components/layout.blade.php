@@ -15,7 +15,7 @@
     <div class="head">
         <div class="search">
         <div class="main-container">
-            <form action="../home/index.php" method="get">
+            <form action="/" method="get">
                 <input type="text" name="search" placeholder="Traži">
             </form>
         </div>
