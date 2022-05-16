@@ -1,4 +1,4 @@
-<x-layout :towns="$towns" :categories="$categories">
+<x-layout >
     <x-slot:title>
         Naslovna strana
     </x-slot>

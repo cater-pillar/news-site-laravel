@@ -1,4 +1,3 @@
-@props(['towns', 'categories'])
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,7 +24,7 @@
             
         </div>
     </div>
-    <x-nav :towns="$towns" :categories="$categories" />
+    <x-nav />
 </header>
 <div class="main-container">
 

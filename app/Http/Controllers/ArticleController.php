@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Town;
-use App\Models\Category;
 use App\Models\Article;
 
 class ArticleController extends Controller
@@ -29,8 +27,6 @@ class ArticleController extends Controller
         }
 
         return view('home', [
-            'towns' => Town::all(),
-            'categories' => Category::all(),
             'articles' => $articles->get()
         ]);
     }
@@ -38,8 +34,6 @@ class ArticleController extends Controller
 
     public function show($id) {
         return view('article', [
-            'towns' => Town::all(),
-            'categories' => Category::all(),
             'article' => Article::find($id)
         ]);
     }
