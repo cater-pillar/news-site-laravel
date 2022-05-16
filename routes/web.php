@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Town;
 use App\Models\Category;
 use App\Models\Article;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,33 +17,8 @@ use App\Models\Article;
 |
 */
 
-Route::get('/', function () {
-
-    $articles = Article::query();
-
-    if (request('search')) {
-        $articles->where('title', 'like', '%'.request('search').'%')
-                 ->orWhere('extract', 'like', '%'.request('search').'%')
-                 ->orWhere('body', 'like', '%'.request('search').'%');
-    }
-
-    if (request('category')) {
-        $articles->where('category_id', request('category'));
-    }
-
-    return view('home', [
-        'towns' => Town::all(),
-        'categories' => Category::all(),
-        'articles' => $articles->get()
-    ]);
-});
+Route::get('/', [ArticleController::class, 'index']);
 
 
-Route::get('/article/{id}', function ($id) {
-    return view('article', [
-        'towns' => Town::all(),
-        'categories' => Category::all(),
-        'article' => Article::find($id)
-    ]);
-});
+Route::get('/article/{id}', [ArticleController::class, 'show']);
 
