@@ -8,7 +8,8 @@ use App\Models\Article;
 class ArticleController extends Controller
 {
     public function index() {
-        $articles = Article::query();
+        
+        $articles = Article::with('comments', 'category', 'towns');
 
         if (request('search')) {
             $articles->where('title', 'like', '%'.request('search').'%')
@@ -34,7 +35,7 @@ class ArticleController extends Controller
 
     public function show($id) {
         return view('article', [
-            'article' => Article::find($id)
+            'article' => Article::with('comments.user')->find($id)
         ]);
     }
 }
