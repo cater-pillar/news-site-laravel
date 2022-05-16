@@ -35,4 +35,10 @@
     <span class="text-footer">Vesti, Internet novine - Sva prava zadržana ©</span>
 </footer>
 </div>
+<script>
+    function toggleDropdown() {
+    let dropdown = document.getElementById('nav-dropdown')
+        dropdown.classList.toggle("display-dropdown");
+    }
+</script>
 </body>

@@ -40,7 +40,7 @@ header {
     border-top: 2px solid #767679; 
 }
 
-.nav-primary a {
+.nav-primary .nav-link, .nav-primary button {
     border-left: 1px solid #919191;
     border-right: 1px solid #767679;
     border-top: 2px solid transparent;     
@@ -69,6 +69,33 @@ header {
 .nav-item {
     display: inline;
 }
+.nav-dropdown {
+    position: relative;
+}
+.nav-dropdown-list {
+    position: absolute;
+    background-color: #848485;
+    width: 135px;
+    left: 0px;
+}
+.nav-dropdown-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+.display-dropdown {
+    display: none;
+}
+.nav-dropdown-link {
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    line-height: 34px;
+    padding: 0px 15px;
+    display: inline-block;
+}
+
 .horizontal-banner {
 	padding: 5px;
 	margin: 12px 0 10px 0;
