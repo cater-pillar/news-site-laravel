@@ -2,10 +2,6 @@
     <x-slot:title>
         {{ $article->title }}
     </x-slot>
-    <div class="horizontal-banner"></div>
-    <div class="breadcrumbs">
-        {{ "Vesti | ". $article->title }}
-    </div>
     @if($article)
         <x-article-full :article="$article" />
         <div class="horizontal-banner-red"></div>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vesti | {{ $title }}</title>
+    <title>Vesti | {{ $add_to_title == "" ? $title : $add_to_title }}</title>
     <link rel="icon" href={{ URL::asset('images/newspaper-red.png'); }}>
     <link rel="stylesheet" type="text/css" href={{ URL::asset('style.css'); }} >
 </head>
@@ -24,9 +24,13 @@
             
         </div>
     </div>
-    <x-nav />
+    <x-nav :categories="$categories" :towns="$towns"/>
 </header>
 <div class="main-container">
+    <div class="horizontal-banner"></div>
+    <div class="breadcrumbs">
+        Vesti | {{ $add_to_title == "" ? $title : $add_to_title }}
+    </div>
 
     {{ $slot }}
 

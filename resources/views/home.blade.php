@@ -1,11 +1,7 @@
 <x-layout >
     <x-slot:title>
-        Naslovna strana
+        {{ "Naslovna" }}
     </x-slot>
-        <div class="horizontal-banner"></div>
-        <div class="breadcrumbs">
-            Ovde treba da ide naslov strane.
-        </div>
         @if (count($articles) > 0)
         <div class="main-article">
             <x-article-card :article="$articles[0]" type="main-article" />
