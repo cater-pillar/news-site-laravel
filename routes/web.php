@@ -5,6 +5,8 @@ use App\Models\Town;
 use App\Models\Category;
 use App\Models\Article;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SessionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +24,13 @@ Route::get('/', [ArticleController::class, 'index']);
 
 Route::get('/article/{id}', [ArticleController::class, 'show']);
 
+Route::post('/register', [UserController::class, 'create']);
+
+Route::post('/logout', [SessionController::class, 'destroy']);
+
+Route::post('/login', [SessionController::class, 'store']);
+
+
+Route::get('/login-page', function() {
+    return view('login-page');
+});

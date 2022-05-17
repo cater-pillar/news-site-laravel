@@ -21,7 +21,7 @@
                 @endforeach
             </ul>
         @endif
-        @if(isset($_SESSION['user']))
+        @if(auth()->user())
             @include('_post-comment')
         @else
             @include('_register')
