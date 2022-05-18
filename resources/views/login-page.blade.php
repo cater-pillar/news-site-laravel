@@ -6,8 +6,14 @@
     
     <form action="/login" method="post" class="login-form">
         @csrf
-        <input type="text" name="name" placeholder="Korisničko ime ili email" required>
+        <input type="text" name="email" placeholder="Email adresa" required>
+        @error("email")
+                <p class="error-msg">{{ $message }}</p>
+        @enderror
         <input type="password" name="password" placeholder="Lozinka" required>
+        @error("password")
+                <p class="error-msg">{{ $message }}</p>
+        @enderror
         <input type="checkbox" name="keep" id="keep">
         <label for="keep">Ostavi me prijavljenog</label>
         <input type="submit" value="Prijavi se">

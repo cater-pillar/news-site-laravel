@@ -9,21 +9,21 @@ class SessionController extends Controller
 {
     public function destroy() {
         auth()->logout();
-
-        return redirect('/');
+        
+        return back()->with('success', 'Uspešno ste se odjavili');
     }
 
 
     public function store() {
         $attributes = request()->validate([
-            'name' => ['required', Rule::exists('users','name')],
+            'email' => ['required', Rule::exists('users','email')],
             'password' => ['required']
        ]);
-       dd(auth()->attempt($attributes));
+       
        if (auth()->attempt($attributes)) {
             session()->regenerate();
-        //    return redirect('/')->with('success', 'You have logged in successfully!');
+        return back()->with('success', 'Uspešno ste se ulogovali');
        }
-    //   return back()->withInput()->withErrors(['password' => 'Wrong password.']);
+        return back()->withInput()->withErrors(['password' => 'Pogrešna lozinka.']);
     }
 }

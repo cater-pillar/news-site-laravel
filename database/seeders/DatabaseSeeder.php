@@ -61,5 +61,14 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password!'),
             'is_admin' => true,
         ]);
+
+        $this->call([
+            UserSeeder::class,
+            ArticleSeeder::class,
+            UserSeeder::class,
+            ArticleSeeder::class,
+            CommentSeeder::class,
+            CommentSeeder::class,
+        ]);
     }
 }

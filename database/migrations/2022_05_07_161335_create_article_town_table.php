@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('town_id')->constrained();
             $table->foreignId('article_id')->constrained();
-            $table->timestamps();
         });
     }
 

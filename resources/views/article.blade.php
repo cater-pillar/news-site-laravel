@@ -27,4 +27,7 @@
             @include('_register')
         @endif
     @endif
+    @if(session()->has('success'))
+        <div class='success-msg' id='success-msg'>{{ session()->get('success') }}</div>
+    @endif
 </x-layout>

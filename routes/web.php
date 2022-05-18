@@ -24,13 +24,13 @@ Route::get('/', [ArticleController::class, 'index']);
 
 Route::get('/article/{id}', [ArticleController::class, 'show']);
 
-Route::post('/register', [UserController::class, 'create']);
+Route::post('/register', [UserController::class, 'store'])->middleware('guest');
 
 Route::post('/logout', [SessionController::class, 'destroy']);
 
-Route::post('/login', [SessionController::class, 'store']);
+Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 
-Route::get('/login-page', function() {
+Route::get('/login', function() {
     return view('login-page');
-});
+})->middleware('guest');

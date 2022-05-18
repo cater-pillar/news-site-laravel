@@ -44,5 +44,11 @@
     let dropdown = document.getElementById('nav-dropdown')
         dropdown.classList.toggle("display-dropdown");
     }
+
+    let message = document.getElementById('success-msg')
+    setTimeout(() => {
+        message.className = "hidden-input";   
+    }, 4000);
+
 </script>
 </body>
