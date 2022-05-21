@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,9 +27,11 @@ Route::get('/article/{id}', [ArticleController::class, 'show']);
 
 Route::post('/register', [UserController::class, 'store'])->middleware('guest');
 
-Route::post('/logout', [SessionController::class, 'destroy']);
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
+
+Route::post('/article/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
 
 
 Route::get('/login', function() {

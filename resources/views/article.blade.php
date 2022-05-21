@@ -22,7 +22,7 @@
             </ul>
         @endif
         @if(auth()->user())
-            @include('_post-comment')
+            <x-post-comment :id="$article->id" />
         @else
             @include('_register')
         @endif

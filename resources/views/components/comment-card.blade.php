@@ -5,7 +5,7 @@
         <h3>
              {{ $comment->user->name }} 
         </h3>
-        <span>{{ $comment->created_at }}</span>
+        <span>{{ $comment->created_at->diffForHumans() }}</span>
         <p>
             {{ $comment->body }}
         </p>

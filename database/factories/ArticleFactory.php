@@ -27,7 +27,7 @@ class ArticleFactory extends Factory
         return [
             'title' => $this->faker->sentence(),
             'extract' => $this->faker->sentence(),
-            'body' => $this->faker->text(),
+            'body' => $this->faker->paragraph(4),
             'category_id' => mt_rand(1,7),
             'photo' => $photos[mt_rand(0,3)]
         ];

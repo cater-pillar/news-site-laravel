@@ -1,15 +1,16 @@
+@props(['id'])
 <h5 id="comment">
     Pošalji komentar:
 </h5>
-<form action="../data/new_comment.php" 
+<form action="/article/{{$id}}/comments" 
       method="post" 
       class="login-form">
-    <input row="5" type="text" 
+      @csrf
+    <input row="5" type="text" id="comment" required
            name="comment" placeholder="Komentar">
-    <input class="hidden-input" name="article_id" 
-           value="" type="text" >
-    <input class="hidden-input" name="user_id" 
-           value={{ auth()->user()->id }} type="text" >
+       @error('comment')
+              <p class="error-msg">{{ $message }}</p>
+       @enderror
     <input type="submit" value="Pošalji">
 </form>
 <form action="/logout" method="post" class="logout-form">
