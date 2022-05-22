@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Models\Town;
+use App\Models\Category;
 
 class ArticleController extends Controller
 {
@@ -36,6 +38,13 @@ class ArticleController extends Controller
     public function show($id) {
         return view('article', [
             'article' => Article::with('comments.user')->find($id)
+        ]);
+    }
+
+    public function create() {
+        return view('create-article', [
+            'towns' => Town::all(),
+            'categories' => Category::all(),
         ]);
     }
 }

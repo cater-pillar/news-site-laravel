@@ -95,7 +95,15 @@ header {
     padding: 0px 15px;
     display: inline-block;
 }
-
+.nav-admin {
+    background-color: #c34646;
+    color: #fff;
+    padding: 4px 0px 2px 15px;
+}
+.nav-admin a {
+    color: #fff;
+    text-decoration: underline;
+}
 .horizontal-banner {
 	padding: 5px;
 	margin: 12px 0 10px 0;
@@ -352,7 +360,44 @@ h5 {
     text-align: right;
     cursor: pointer;
 }
+.login-form input,
+.login-form textarea,
+.login-form select {
+    width: 100%;
+    background-color: #f9f8f8;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #d6d6d6;
+    padding: 10px 10px 10px 35px;
+    margin-bottom: 20px;
+}
+.login-form input[type='checkbox'] {
+    width: fit-content;
+}
+.login-form input[type='file'] {
+    display: none;
+}
 
+.login-form input[type='submit'],
+.custom-photo-upload {
+    background-color: #ac1d21;
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+    padding: 10px;
+    border: 0;
+    margin-bottom: 0px;
+}
+.custom-photo-upload {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+label {
+    font-size: 14px;
+    color: #323232;
+}
 
 
 

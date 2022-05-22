@@ -25,6 +25,8 @@ Route::get('/', [ArticleController::class, 'index']);
 
 Route::get('/article/{id}', [ArticleController::class, 'show']);
 
+Route::get('/create', [ArticleController::class, 'create']);
+
 Route::post('/register', [UserController::class, 'store'])->middleware('guest');
 
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');

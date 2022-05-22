@@ -1,5 +1,14 @@
 @props(['categories', 'towns'])
 <nav>
+    @if(auth()->user())
+    @if(auth()->user()->is_admin)
+        <div class="nav-admin">
+            <div class="main-container">
+                Dobrodošao admine | <a href="/create">Dodaj novu vest</a> | <a href="#">Odjavi me</a> 
+            </div>
+        </div>
+    @endif
+    @endif
     <div class="nav-primary">
         <div class="main-container">
             <ul class="nav-list">
