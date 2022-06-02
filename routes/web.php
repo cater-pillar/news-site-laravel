@@ -37,6 +37,8 @@ Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 Route::post('/article/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
 
+Route::get('/article/{id}/destroy', [ArticleController::class, 'destroy'])->middleware('auth');
+
 
 Route::get('/login', function() {
     return view('login-page');

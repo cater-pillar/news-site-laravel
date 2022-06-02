@@ -35,7 +35,7 @@
     {{ $slot }}
 
 <footer>
-    <img src="../images/newspaper-red.png" alt="logo" class="logo-footer">
+    <img src="{{ asset("images/newspaper-red.png") }}" alt="logo" class="logo-footer">
     <span class="text-footer">Vesti, Internet novine - Sva prava zadržana ©</span>
 </footer>
 </div>

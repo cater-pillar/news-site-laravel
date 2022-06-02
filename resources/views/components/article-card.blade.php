@@ -1,11 +1,23 @@
 @props(['article', 'type'])
 
 <div class="{{$type}}-img">
-    <img src="/images/{{ $article->photo }}">
+    <img src="{{ asset("images/$article->photo") }}">
 </div>
 <div class="{{$type}}-body">
     <p>
         {{ $article->category->name }}
+        @if(auth()->user())
+        @if(auth()->user()->is_admin)
+        <a href="/article/{{ $article->id }}/destroy"
+           class="delete-edit-link" title="edit">
+           <img src="/images/edit.png" alt="edit" class="delete-edit-img">
+        </a>
+        <a href="/article/{{ $article->id }}/destroy"
+           class="delete-edit-link" title="delete">
+           <img src="/images/delete.png" alt="delete" class="delete-edit-img">
+        </a>
+        @endif
+        @endif
     </p>
     <h1>
         <a class="title-color" 

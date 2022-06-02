@@ -62,12 +62,18 @@ class ArticleController extends Controller
            'body' => ['required']
        ]);
         
-    //    $photo_path = request()->file(key: 'photo')
-    //                ->storeAs('images', request('title') . ".jpg");
+        $photo_path = request()->file(key: 'photo')
+                    ->storeAs('images', request('title') . ".jpg");
 
         
 
-        $article = Article::create($attributes);
+        $article = Article::create([
+           'category_id' => $attributes['category_id'],
+           'title' => $attributes['title'],
+           'photo' => $photo_path,
+           'extract' => $attributes['extract'],
+           'body' => $attributes['body']
+        ]);
         foreach($town_keys as $town_key) {
             $article->towns()->attach(request($town_key));
         }
@@ -75,5 +81,9 @@ class ArticleController extends Controller
 
         return back()->with('success', 'Uspešno ste objavili vest');
     }
-    
+
+    public function destroy($id) {
+        Article::destroy($id);
+        return back()->with('success', 'Vest izbrisana!');
+    }
 }
