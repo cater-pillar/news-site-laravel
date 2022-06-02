@@ -377,7 +377,13 @@ h5 {
 .login-form input[type='file'] {
     display: none;
 }
-
+.checkbox-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+.checkbox-item {
+    width: 120px;
+}
 .login-form input[type='submit'],
 .custom-photo-upload {
     background-color: #ac1d21;
