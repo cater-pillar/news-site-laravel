@@ -81,7 +81,35 @@ class ArticleController extends Controller
     public function edit($id) {
         
         return view('edit-article', [
-            'article' => Article::with('comments.user', 'category', 'towns')->find($id)
+            'towns' => Town::all(),
+            'categories' => Category::all(),
+            'article' => Article::with('category', 'towns')->find($id)
         ]);
+    }
+
+    public function update($id) {
+
+        ddd(request());
+        
+        $town_keys = collect(request()->keys())->filter(
+            fn($key) => str_contains($key, "town_") && $key);
+
+       $attributes = request()->validate([
+           'category_id' => ['required'],
+           'title' => ['required'],
+           'photo' => ['required'],
+           'extract' => ['required'],
+           'body' => ['required']
+       ]);
+        
+        $attributes['photo'] = request()->file('photo')->store('images');
+
+        $article = Article::find($id);
+        foreach($town_keys as $town_key) {
+            $article->towns()->attach(request($town_key));
+        }
+        $article->save();
+
+        return redirect('/')->with('success', 'Uspešno ste ažurirali vest');
     }
 }

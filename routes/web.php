@@ -41,6 +41,8 @@ Route::post('/article/{id}/destroy', [ArticleController::class, 'destroy'])->mid
 
 Route::get('/article/{id}/edit', [ArticleController::class, 'edit'])->middleware('auth');
 
+Route::post('/article/{id}/update', [ArticleController::class, 'update'])->middleware('auth');
+
 
 Route::get('/login', function() {
     return view('login-page');
