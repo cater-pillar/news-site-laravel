@@ -142,10 +142,20 @@ header {
 .main-article-body {
     width: 50%;
 }
+.delete-edit-form {
+    display: inline;
+    float: right;
+    padding: 1px;
+    margin: 5px 8px;
+}
 .delete-edit-link {
     float: right;
     padding: 1px;
     margin: 5px 8px;
+}
+.delete-edit-btn {
+    border: none;
+    background-color: transparent;
 }
 .delete-edit-img {
     width: 17px !important;
@@ -354,11 +364,11 @@ h5 {
 .login-page {
     margin-bottom: 300px;
 }
-.logout-form {
+.logout-form-comment {
     max-width: 600px;
     margin: 0 auto;
 }
-.logout-submit {
+.logout-submit-comment {
     display: block; 
     margin: 7px 0px 0px auto;
     border: none;
@@ -366,6 +376,17 @@ h5 {
     color: #c34646;
     text-decoration: underline;
     text-align: right;
+    cursor: pointer;
+}
+.logout-form-admin {
+    display: inline;
+}
+.logout-submit-admin {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: underline;
     cursor: pointer;
 }
 .login-form input,

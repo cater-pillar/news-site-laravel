@@ -4,7 +4,7 @@
     @if(auth()->user()->is_admin)
         <div class="nav-admin">
             <div class="main-container">
-                Dobrodošao admine | <a href="/create">Dodaj novu vest</a> | <a href="#">Odjavi me</a> 
+                Dobrodošao admine | <a href="/create">Dodaj novu vest</a> | <x-logout type="admin" />
             </div>
         </div>
     @endif

@@ -29,7 +29,7 @@ class ArticleFactory extends Factory
             'extract' => $this->faker->sentence(),
             'body' => $this->faker->paragraph(4),
             'category_id' => mt_rand(1,7),
-            'photo' => $photos[mt_rand(0,3)]
+            'photo' => "images/".$photos[mt_rand(0,3)]
         ];
     }
 

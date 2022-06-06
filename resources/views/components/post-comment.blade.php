@@ -13,7 +13,4 @@
        @enderror
     <input type="submit" value="Pošalji">
 </form>
-<form action="/logout" method="post" class="logout-form">
-       @csrf
-    <input type="submit" value="Odjavi me" class="logout-submit"/>
-</form>
+<x-logout type='comment' />

@@ -57,33 +57,31 @@ class ArticleController extends Controller
        $attributes = request()->validate([
            'category_id' => ['required'],
            'title' => ['required'],
-           'photo' => ['required'], // !
+           'photo' => ['required'],
            'extract' => ['required'],
            'body' => ['required']
        ]);
         
-        $photo_path = request()->file(key: 'photo')
-                    ->storeAs('images', request('title') . ".jpg");
+        $attributes['photo'] = request()->file('photo')->store('images');
 
-        
-
-        $article = Article::create([
-           'category_id' => $attributes['category_id'],
-           'title' => $attributes['title'],
-           'photo' => $photo_path,
-           'extract' => $attributes['extract'],
-           'body' => $attributes['body']
-        ]);
+        $article = Article::create($attributes);
         foreach($town_keys as $town_key) {
             $article->towns()->attach(request($town_key));
         }
         $article->save();
 
-        return back()->with('success', 'Uspešno ste objavili vest');
+        return redirect('/')->with('success', 'Uspešno ste objavili vest');
     }
 
     public function destroy($id) {
         Article::destroy($id);
         return back()->with('success', 'Vest izbrisana!');
+    }
+
+    public function edit($id) {
+        
+        return view('edit-article', [
+            'article' => Article::with('comments.user', 'category', 'towns')->find($id)
+        ]);
     }
 }
