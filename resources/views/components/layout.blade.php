@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vesti | {{ $add_to_title == "" ? $title : $add_to_title }}</title>
-    <link rel="icon" href={{ URL::asset('images/newspaper-red.png'); }}>
+    <link rel="icon" href={{ asset('images/newspaper-red.png'); }}>
     <link rel="stylesheet" type="text/css" href={{ URL::asset('style.css'); }} >
 </head>
 <body>
@@ -20,7 +20,7 @@
         </div>
         </div>
         <div class="main-container">
-            <img src="../images/newspaper.png" alt="logo" class="logo">
+            <img src={{ asset('images/newspaper.png') }} alt="logo" class="logo">
             
         </div>
     </div>
@@ -35,7 +35,7 @@
     {{ $slot }}
 
 <footer>
-    <img src="{{ asset("images/newspaper-red.png") }}" alt="logo" class="logo-footer">
+    <img src={{ asset('images/newspaper-red.png') }} alt="logo" class="logo-footer">
     <span class="text-footer">Vesti, Internet novine - Sva prava zadržana ©</span>
 </footer>
 </div>

@@ -3,7 +3,7 @@
         {{ "Ažuriranje vesti" }}
     </x-slot>
 
-<form action="/update" 
+<form action={{ url("article/$article->id/update")}} 
       method="post" enctype="multipart/form-data" 
       class="login-form">
       @csrf
@@ -44,8 +44,7 @@
     <label for="photo" class="custom-photo-upload" >
         Postavi fotografiju
     </label>
-    <input type="file" id="photo" name="photo" accept="image/*" 
-           required value="{{ $article->photo }}">
+    <input type="file" id="photo" name="photo" accept="image/*" >
     <textarea name="abstract" placeholder="Unesite apstrakt vesti" 
            required rows="7">{{ $article->extract }}</textarea>
     <textarea name="body" placeholder="Unesi telo vesti" 

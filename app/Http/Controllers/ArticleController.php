@@ -89,26 +89,27 @@ class ArticleController extends Controller
 
     public function update($id) {
 
-        ddd(request());
-        
+    /*    
         $town_keys = collect(request()->keys())->filter(
             fn($key) => str_contains($key, "town_") && $key);
 
        $attributes = request()->validate([
            'category_id' => ['required'],
            'title' => ['required'],
-           'photo' => ['required'],
            'extract' => ['required'],
            'body' => ['required']
        ]);
-        
+        */
+       if(request()->file('photo')) {
         $attributes['photo'] = request()->file('photo')->store('images');
+       }
+        
 
-        $article = Article::find($id);
+    /*    $article = Article::find($id);
         foreach($town_keys as $town_key) {
             $article->towns()->attach(request($town_key));
         }
-        $article->save();
+        $article->save();*/
 
         return redirect('/')->with('success', 'Uspešno ste ažurirali vest');
     }
