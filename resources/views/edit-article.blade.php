@@ -19,6 +19,9 @@
             @endif
         @endforeach
     </select>
+    @error("category_id")
+                <p class="error-msg">{{ $message }}</p>
+    @enderror
     <div class="checkbox-container">
         @foreach($towns as $index => $town)
             <div class="checkbox-item">
@@ -41,14 +44,23 @@
     <input type="text" name="title" required 
            value="{{ $article->title }}"
            placeholder="Unesite naslov vesti">
+    @error("title")
+        <p class="error-msg">{{ $message }}</p>
+    @enderror
     <label for="photo" class="custom-photo-upload" >
         Postavi fotografiju
     </label>
     <input type="file" id="photo" name="photo" accept="image/*" >
-    <textarea name="abstract" placeholder="Unesite apstrakt vesti" 
+    <textarea name="extract" placeholder="Unesite apstrakt vesti" 
            required rows="7">{{ $article->extract }}</textarea>
+    @error("extract")
+        <p class="error-msg">{{ $message }}</p>
+    @enderror
     <textarea name="body" placeholder="Unesi telo vesti" 
               required rows="32">{{ $article->body }}</textarea>
+    @error("body")
+        <p class="error-msg">{{ $message }}</p>
+    @enderror
     <input type="submit" value="Ažuriraj vest">
 </form>
 </x-layout>

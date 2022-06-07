@@ -37,6 +37,12 @@ Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
 
 Route::post('/article/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
 
+Route::post('/comments/{id}/destroy', [CommentController::class, 'destroy'])->middleware('auth');
+
+Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->middleware('auth');
+
+Route::post('/comments/{id}/update', [CommentController::class, 'update'])->middleware('auth');
+
 Route::post('/article/{id}/destroy', [ArticleController::class, 'destroy'])->middleware('auth');
 
 Route::get('/article/{id}/edit', [ArticleController::class, 'edit'])->middleware('auth');

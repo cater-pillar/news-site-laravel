@@ -89,9 +89,14 @@ class ArticleController extends Controller
 
     public function update($id) {
 
-    /*    
         $town_keys = collect(request()->keys())->filter(
             fn($key) => str_contains($key, "town_") && $key);
+
+        $town_ids = [];
+
+        foreach($town_keys as $town_key) {
+            array_push($town_ids, request($town_key));
+        }
 
        $attributes = request()->validate([
            'category_id' => ['required'],
@@ -99,17 +104,18 @@ class ArticleController extends Controller
            'extract' => ['required'],
            'body' => ['required']
        ]);
-        */
-       if(request()->file('photo')) {
-        $attributes['photo'] = request()->file('photo')->store('images');
-       }
         
-
-    /*    $article = Article::find($id);
-        foreach($town_keys as $town_key) {
-            $article->towns()->attach(request($town_key));
-        }
-        $article->save();*/
+        $article = Article::find($id);
+        $article->towns()->sync($town_ids);
+        if(request()->file('photo')) {
+            $article->photo = request()->file('photo')->store('images');
+           }
+        $article->category_id = $attributes['category_id'];
+        $article->title = $attributes['title'];
+        $article->extract = $attributes['extract'];
+        $article->body = $attributes['body'];
+        
+        $article->save();
 
         return redirect('/')->with('success', 'Uspešno ste ažurirali vest');
     }

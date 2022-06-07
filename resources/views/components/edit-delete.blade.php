@@ -1,12 +1,12 @@
-@props(['id'])
+@props(['id', 'link'])
 @if(auth()->user())
 @if(auth()->user()->is_admin)
-    <a href="/article/{{ $id }}/edit"
+    <a href="/{{ $link }}/{{ $id }}/edit"
         class="delete-edit-link" title="edit">
         <img src="/images/edit.png" alt="edit" 
             class="delete-edit-img">
     </a>
-    <form action="/article/{{ $id }}/destroy" method="post" 
+    <form action="/{{ $link }}/{{ $id }}/destroy" method="post" 
             class="delete-edit-form">
         @csrf
         <button class="delete-edit-btn">
