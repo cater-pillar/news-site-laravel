@@ -12,16 +12,10 @@
 </html>
 <header>
     <div class="head">
-        <div class="search">
+        @include('_search')
         <div class="main-container">
-            <form action="/" method="get">
-                <input type="text" name="search" placeholder="Traži">
-            </form>
-        </div>
-        </div>
-        <div class="main-container">
-            <img src={{ asset('images/newspaper.png') }} alt="logo" class="logo">
-            
+            <img src={{ asset('images/newspaper.png') }} 
+                 alt="logo" class="logo">       
         </div>
     </div>
     <x-nav :categories="$categories" :towns="$towns"/>

@@ -19,7 +19,9 @@
             @endforeach
         </ul>
         @else 
-        <p>Nijedan clanak ne odgovara pretrazi</p>
+            <p class="no-article">
+                Nijedna vest ne odgovara pretrazi
+            </p>
         @endif
         <div class="horizontal-banner-red"></div>
         <x-success/>

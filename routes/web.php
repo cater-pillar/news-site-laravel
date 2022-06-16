@@ -1,9 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Models\Town;
-use App\Models\Category;
-use App\Models\Article;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SessionController;
@@ -31,9 +28,13 @@ Route::post('/store', [ArticleController::class, 'store']);
 
 Route::post('/register', [UserController::class, 'store'])->middleware('guest');
 
+Route::get('/register/create', [UserController::class, 'create'])->middleware('guest');
+
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
+
+Route::get('/login-page', [SessionController::class, 'create'])->middleware('guest');
 
 Route::post('/article/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
 
@@ -50,6 +51,3 @@ Route::get('/article/{id}/edit', [ArticleController::class, 'edit'])->middleware
 Route::post('/article/{id}/update', [ArticleController::class, 'update'])->middleware('auth');
 
 
-Route::get('/login', function() {
-    return view('login-page');
-})->middleware('guest');

@@ -13,6 +13,9 @@ class SessionController extends Controller
         return back()->with('success', 'Uspešno ste se odjavili');
     }
 
+    public function create() {
+        return view('login-page');
+    }
 
     public function store() {
         $attributes = request()->validate([

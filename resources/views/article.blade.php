@@ -1,6 +1,6 @@
 <x-layout >
     <x-slot:title>
-        {{ $article->title }}
+        {{ $article ? $article->title : "Vest nije nađena" }}
     </x-slot>
     @if($article)
         <x-article-full :article="$article" />
@@ -24,7 +24,7 @@
         @if(auth()->user())
             <x-post-comment :id="$article->id" />
         @else
-            @include('_register')
+            <x-login-register is_login=0 />
         @endif
     @endif
     <x-success/>

@@ -20,4 +20,8 @@ class UserController extends Controller
         auth()->login($user);
         return back()->with('success', 'Uspešno ste registrovali nalog');
     }
+
+    public function create() {
+        return view('register-page');
+    }
 }
