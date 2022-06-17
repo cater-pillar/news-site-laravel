@@ -1,6 +1,5 @@
 @props(['id', 'user_id' => null, 'link'])
-@if(auth()->user())
-@if(auth()->user()->is_admin || auth()->user()->id === $user_id)
+@if(auth()->user()?->is_admin || auth()->user()?->id === $user_id)
     <a href="/{{ $link }}/{{ $id }}/edit"
         class="delete-edit-link" title="edit">
         <img src="/images/edit.png" alt="edit" 
@@ -15,5 +14,4 @@
             class="delete-edit-img">
         </button>
     </form> 
-@endif
 @endif

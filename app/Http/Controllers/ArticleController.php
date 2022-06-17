@@ -43,6 +43,10 @@ class ArticleController extends Controller
     }
 
     public function create() {
+
+      
+        
+
         return view('create-article', [
             'towns' => Town::all(),
             'categories' => Category::all(),

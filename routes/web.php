@@ -21,9 +21,9 @@ Route::get('/', [ArticleController::class, 'index']);
 
 Route::get('/article/{id}', [ArticleController::class, 'show']);
 
-Route::get('/create', [ArticleController::class, 'create'])->middleware('auth');
+Route::get('/create', [ArticleController::class, 'create'])->middleware('admin');
 
-Route::post('/store', [ArticleController::class, 'store']);
+Route::post('/store', [ArticleController::class, 'store'])->middleware('admin');
 
 Route::post('/register/store', [UserController::class, 'store'])->middleware('guest');
 
@@ -43,10 +43,10 @@ Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->middlewar
 
 Route::post('/comments/{id}/update', [CommentController::class, 'update'])->middleware('auth');
 
-Route::post('/article/{id}/destroy', [ArticleController::class, 'destroy'])->middleware('auth');
+Route::post('/article/{id}/destroy', [ArticleController::class, 'destroy'])->middleware('admin');
 
-Route::get('/article/{id}/edit', [ArticleController::class, 'edit'])->middleware('auth');
+Route::get('/article/{id}/edit', [ArticleController::class, 'edit'])->middleware('admin');
 
-Route::post('/article/{id}/update', [ArticleController::class, 'update'])->middleware('auth');
+Route::post('/article/{id}/update', [ArticleController::class, 'update'])->middleware('admin');
 
 
