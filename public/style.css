@@ -165,6 +165,7 @@ header {
 }
 .delete-edit-img {
     width: 17px !important;
+    cursor: pointer;
 }
 .main-article-abstract {
     margin-bottom: 16px;

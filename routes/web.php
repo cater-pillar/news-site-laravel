@@ -19,22 +19,21 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [ArticleController::class, 'index']);
 
-
 Route::get('/article/{id}', [ArticleController::class, 'show']);
 
-Route::get('/create', [ArticleController::class, 'create']);
+Route::get('/create', [ArticleController::class, 'create'])->middleware('auth');
 
 Route::post('/store', [ArticleController::class, 'store']);
 
-Route::post('/register', [UserController::class, 'store'])->middleware('guest');
+Route::post('/register/store', [UserController::class, 'store'])->middleware('guest');
 
 Route::get('/register/create', [UserController::class, 'create'])->middleware('guest');
 
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-Route::post('/login', [SessionController::class, 'store'])->middleware('guest');
+Route::post('/login/store', [SessionController::class, 'store'])->middleware('guest');
 
-Route::get('/login-page', [SessionController::class, 'create'])->middleware('guest');
+Route::get('/login/create', [SessionController::class, 'create'])->middleware('guest');
 
 Route::post('/article/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
 

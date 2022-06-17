@@ -4,7 +4,7 @@
     {{ $is_login ? "Prijavite se" : "Otvorite nalog" }} da biste postavili komentar:
 </h5>
 
-<form action={{ $is_login ? "/login" : "/register" }} 
+<form action={{ $is_login ? "/login/store" : "/register/store" }} 
       method="post" class="login-form">
       @csrf
 
@@ -47,7 +47,7 @@
 </form>
 
 <p>{{ $is_login ? "Nemate nalog?" : "Već imate nalog?" }}
-    <a href={{ $is_login ? "/register/create" : "/login-page" }}>
+    <a href={{ $is_login ? "/register/create" : "/login/create" }}>
         {{ $is_login ? "Otvorite ga" : "Prijavite se" }}
     </a>
 </p>
