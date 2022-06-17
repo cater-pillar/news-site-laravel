@@ -15,7 +15,7 @@
                required>
         @error("name")
                 <p class="error-msg">
-                    Korisničko ime mora sadržati najmanje 3 karaktera
+                    {{ $message }}
                 </p>
         @enderror
     @endif
@@ -25,7 +25,7 @@
            placeholder="Email" required>
     @error("email")
             <p class="error-msg">
-                Neophodno je uneti ispravnu, jedinstvenu email adresu
+                {{ $message }}
             </p>
     @enderror
 
@@ -33,7 +33,7 @@
            placeholder="Lozinka">
     @error("password")
         <p class="error-msg">
-            Lozinka mora sadržati najmanje 3 karaktera
+            {{ $message }}
         </p>
     @enderror
 

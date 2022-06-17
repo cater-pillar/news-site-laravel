@@ -1,4 +1,4 @@
-@props(['id', 'user_id', 'link'])
+@props(['id', 'user_id' => null, 'link'])
 @if(auth()->user())
 @if(auth()->user()->is_admin || auth()->user()->id === $user_id)
     <a href="/{{ $link }}/{{ $id }}/edit"

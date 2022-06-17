@@ -18,6 +18,7 @@ class SessionController extends Controller
     }
 
     public function store() {
+
         $attributes = request()->validate([
             'email' => ['required', Rule::exists('users','email')],
             'password' => ['required']
@@ -25,7 +26,7 @@ class SessionController extends Controller
        
        if (auth()->attempt($attributes)) {
             session()->regenerate();
-        return back()->with('success', 'Uspešno ste se ulogovali');
+        return redirect('/')->with('success', 'Uspešno ste se ulogovali');
        }
         return back()->withInput()->withErrors(['password' => 'Pogrešna lozinka.']);
     }

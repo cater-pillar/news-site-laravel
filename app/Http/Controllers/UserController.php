@@ -17,7 +17,16 @@ class UserController extends Controller
         ]);
 
         $user = User::create($attributes);
+        // not sure if "remember me" logic works
+        // also this needs to be implemented in SessionController as well
+        if(request('keep')) {
+            auth()->login($user, true);    
+        } else {
+            auth()->login($user);
+        }
         auth()->login($user);
+        // issue with success statement, in some cases I need back()
+        // and in some cases I need redirect()
         return back()->with('success', 'Uspešno ste registrovali nalog');
     }
 
