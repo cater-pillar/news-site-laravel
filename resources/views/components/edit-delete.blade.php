@@ -1,4 +1,4 @@
-@props(['id', 'user_id' => null, 'link'])
+@props(['id', 'user_id' => false, 'link'])
 @if(auth()->user()?->is_admin || auth()->user()?->id === $user_id)
     <a href="/{{ $link }}/{{ $id }}/edit"
         class="delete-edit-link" title="edit">
