@@ -26,7 +26,7 @@
             class="comments-link">
             <img class="speech-bubble" 
                  src="/images/speech-bubble.png">
-                {{ $article->comments->count() }}
+                {{ $article->comments_count }}
         </a>
     </div>
 </div>

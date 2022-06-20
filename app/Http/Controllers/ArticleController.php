@@ -12,7 +12,7 @@ class ArticleController extends Controller
 {
     public function index() {
         
-        $articles = Article::with('comments', 'category', 'towns');
+        $articles = Article::with('category', 'towns')->withCount('comments');
 
         if (request('search')) {
             $articles->where('title', 'like', '%'.request('search').'%')
@@ -29,6 +29,10 @@ class ArticleController extends Controller
                 return $query->where('town_id', '=', request('town'));
             });
         }
+
+     /*   cache()->rememberForever('articles', function() use ($articles) {
+            return $articles->get();
+        });*/
 
         return view('home', [
             'articles' => $articles->get()
