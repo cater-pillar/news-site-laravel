@@ -5,14 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Article;
-use App\Models\Town;
-use App\Models\Category;
 
 class ArticleController extends Controller
 {
     public function index() {
         
         $articles = Article::with('category', 'towns')->withCount('comments');
+
+        // where can I delegate these if statements?
 
         if (request('search')) {
             $articles->where('title', 'like', '%'.request('search').'%')
@@ -30,6 +30,8 @@ class ArticleController extends Controller
             });
         }
 
+        // how do I cache the articles?
+        
      /*   cache()->rememberForever('articles', function() use ($articles) {
             return $articles->get();
         });*/
@@ -47,18 +49,14 @@ class ArticleController extends Controller
     }
 
     public function create() {
-
-      
-        
-
         return view('create-article', [
-            'towns' => Town::all(),
-            'categories' => Category::all(),
+            'towns' => cache('towns'),
+            'categories' => cache('categories'),
         ]);
     }
 
     public function store() {
-
+        // code repetition: used in update method as well
         $town_keys = collect(request()->keys())->filter(
             fn($key) => str_contains($key, "town_") && $key);
 
@@ -89,14 +87,14 @@ class ArticleController extends Controller
     public function edit($id) {
         
         return view('edit-article', [
-            'towns' => Town::all(),
-            'categories' => Category::all(),
+            'towns' => cache('towns'),
+            'categories' => cache('towns'),
             'article' => Article::with('category', 'towns')->find($id)
         ]);
     }
 
     public function update($id) {
-
+        // code repetition: used in create method as well
         $town_keys = collect(request()->keys())->filter(
             fn($key) => str_contains($key, "town_") && $key);
 
