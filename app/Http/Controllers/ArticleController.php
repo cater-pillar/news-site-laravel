@@ -82,6 +82,7 @@ class ArticleController extends Controller
        ]);
         
         $attributes['photo'] = request()->file('photo')->store('images');
+        $attributes['slug'] = request('title');
 
         $article = Article::create($attributes);
         foreach($town_keys as $town_key) {
@@ -97,12 +98,12 @@ class ArticleController extends Controller
         return back()->with('success', 'Vest izbrisana!');
     }
 
-    public function edit($slug) {
+    public function edit($id) {
         
         return view('edit-article', [
             'towns' => cache('towns'),
             'categories' => cache('categories'),
-            'article' => Article::with('category', 'towns')->where('slug', $slug)->first()
+            'article' => Article::with('category', 'towns')->find($id)
         ]);
     }
 
@@ -125,6 +126,7 @@ class ArticleController extends Controller
            }
         $article->category_id = $attributes['category_id'];
         $article->title = $attributes['title'];
+        $article->slug = $attributes['title'];
         $article->extract = $attributes['extract'];
         $article->body = $attributes['body'];
         
