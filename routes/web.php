@@ -19,7 +19,7 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [ArticleController::class, 'index']);
 
-Route::get('/article/{id}', [ArticleController::class, 'show']);
+Route::get('/article/{slug}', [ArticleController::class, 'show']);
 
 Route::get('/create', [ArticleController::class, 'create'])->middleware('admin');
 

@@ -24,12 +24,15 @@ class ArticleFactory extends Factory
             '800x600_Cika-Mitke.jpg',
         ];
 
+        $title = $this->faker->unique()->sentence();
+
         return [
-            'title' => $this->faker->sentence(),
+            'title' => $title,
             'extract' => $this->faker->sentence(),
             'body' => $this->faker->paragraph(4),
             'category_id' => mt_rand(1,7),
-            'photo' => "images/".$photos[mt_rand(0,3)]
+            'photo' => "images/".$photos[mt_rand(0,3)],
+            'slug' => $title
         ];
     }
 

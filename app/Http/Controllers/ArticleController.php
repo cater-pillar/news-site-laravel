@@ -8,6 +8,20 @@ use App\Models\Article;
 
 class ArticleController extends Controller
 {
+
+    private function getTownKeys() {
+        return collect(request()->keys())->filter(
+            fn($key) => str_contains($key, "town_") && $key);
+    }
+    
+    private function getTownIds() {
+        $town_ids = [];
+        foreach($this->getTownKeys() as $town_key) {
+            array_push($town_ids, request($town_key));
+        }
+        return $town_ids;
+    }
+
     public function index() {
         
         $articles = Article::with('category', 'towns')->withCount('comments');
@@ -42,9 +56,9 @@ class ArticleController extends Controller
     }
 
 
-    public function show($id) {
+    public function show($slug) {
         return view('article', [
-            'article' => Article::with('comments.user')->find($id)
+            'article' => Article::with('comments.user')->where('slug', $slug)->first()
         ]);
     }
 
@@ -56,9 +70,8 @@ class ArticleController extends Controller
     }
 
     public function store() {
-        // code repetition: used in update method as well
-        $town_keys = collect(request()->keys())->filter(
-            fn($key) => str_contains($key, "town_") && $key);
+ 
+        $town_keys = $this->getTownKeys();
 
        $attributes = request()->validate([
            'category_id' => ['required'],
@@ -84,25 +97,19 @@ class ArticleController extends Controller
         return back()->with('success', 'Vest izbrisana!');
     }
 
-    public function edit($id) {
+    public function edit($slug) {
         
         return view('edit-article', [
             'towns' => cache('towns'),
             'categories' => cache('categories'),
-            'article' => Article::with('category', 'towns')->find($id)
+            'article' => Article::with('category', 'towns')->where('slug', $slug)->first()
         ]);
     }
 
     public function update($id) {
-        // code repetition: used in create method as well
-        $town_keys = collect(request()->keys())->filter(
-            fn($key) => str_contains($key, "town_") && $key);
 
-        $town_ids = [];
-
-        foreach($town_keys as $town_key) {
-            array_push($town_ids, request($town_key));
-        }
+        $town_ids = $this->getTownIds();
+       
 
        $attributes = request()->validate([
            'category_id' => ['required'],

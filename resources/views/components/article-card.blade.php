@@ -10,7 +10,7 @@
     </div>
     <h1>
         <a class="title-color" 
-            href="/article/{{ $article->id }}">
+            href="/article/{{ $article->slug }}">
             {{ $article->title }}
         </a>
     </h1>
@@ -18,11 +18,11 @@
         {{ $article->extract }}
     </p>
     <div class="breadcrumbs">
-        <a  href="/article/{{ $article->id }}" 
+        <a  href="/article/{{ $article->slug }}" 
             class="article-link">
             detaljnije
         </a>
-        <a  href="/article/{{ $article->id }}" 
+        <a  href="/article/{{ $article->slug }}" 
             class="comments-link">
             <img class="speech-bubble" 
                  src="/images/speech-bubble.png">

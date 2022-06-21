@@ -15,12 +15,12 @@ return new class extends Migration
     {
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('title')->unique();
             $table->text('extract');
             $table->string('photo');
             $table->text('body');
             $table->foreignId('category_id')->constrained();
-            
+            $table->text('slug')->unique();
             $table->timestamps();
         });
     }
