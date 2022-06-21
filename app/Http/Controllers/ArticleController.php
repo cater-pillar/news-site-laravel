@@ -31,7 +31,7 @@ class ArticleController extends Controller
         }
 
         // how do I cache the articles?
-        
+
      /*   cache()->rememberForever('articles', function() use ($articles) {
             return $articles->get();
         });*/
@@ -88,7 +88,7 @@ class ArticleController extends Controller
         
         return view('edit-article', [
             'towns' => cache('towns'),
-            'categories' => cache('towns'),
+            'categories' => cache('categories'),
             'article' => Article::with('category', 'towns')->find($id)
         ]);
     }
