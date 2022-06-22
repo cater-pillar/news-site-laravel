@@ -4,15 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Str;
+use App\Traits\HasSlug;
 
 class Article extends Model
 {
     use HasFactory;
-
-    public function setSlugAttribute($title) {
-        $this->attributes['slug'] = Str::slug($title);;
-    }
+    use HasSlug;
 
     public function comments() {
         return $this->hasMany(Comment::class);

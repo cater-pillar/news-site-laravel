@@ -43,7 +43,7 @@ class CommentController extends Controller
         $comment->body = $attribute['body'];
         
         $comment->save();
-
+       // switching to slugs broke the return path
         return redirect("article/$comment->article_id")
                ->with('success', 'Uspešno ste ažurirali komentar');
     }

@@ -5,50 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Article;
+use App\Traits\TownFinder;
+use App\Traits\HasFilter;
 
 class ArticleController extends Controller
 {
 
-    private function getTownKeys() {
-        return collect(request()->keys())->filter(
-            fn($key) => str_contains($key, "town_") && $key);
-    }
-    
-    private function getTownIds() {
-        $town_ids = [];
-        foreach($this->getTownKeys() as $town_key) {
-            array_push($town_ids, request($town_key));
-        }
-        return $town_ids;
-    }
+    use TownFinder;
+    use HasFilter;
 
     public function index() {
         
-        $articles = Article::with('category', 'towns')->withCount('comments');
-
-        // where can I delegate these if statements?
-
-        if (request('search')) {
-            $articles->where('title', 'like', '%'.request('search').'%')
-                    ->orWhere('extract', 'like', '%'.request('search').'%')
-                    ->orWhere('body', 'like', '%'.request('search').'%');
-        }
-
-        if (request('category')) {
-            $articles->where('category_id', request('category'));
-        }
-
-        if (request('town')) {
-            $articles->whereHas('towns', function($query) {
-                return $query->where('town_id', '=', request('town'));
-            });
-        }
+        $articles = $this->filter(
+            Article::with('category', 'towns')
+            ->withCount('comments')
+        );
 
         // how do I cache the articles?
-
-     /*   cache()->rememberForever('articles', function() use ($articles) {
-            return $articles->get();
-        });*/
 
         return view('home', [
             'articles' => $articles->get()
@@ -57,8 +30,10 @@ class ArticleController extends Controller
 
 
     public function show($slug) {
+        // this should probably change (model binding)
         return view('article', [
-            'article' => Article::with('comments.user')->where('slug', $slug)->first()
+            'article' => Article::with('comments.user')
+                         ->where('slug', $slug)->first()
         ]);
     }
 
