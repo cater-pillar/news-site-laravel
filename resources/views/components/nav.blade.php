@@ -1,12 +1,6 @@
 @props(['categories', 'towns'])
 <nav>
-    @if(auth()->user()?->is_admin)
-        <div class="nav-admin">
-            <div class="main-container">
-                Dobrodošao admine | <a href="/create">Dodaj novu vest</a> | <x-logout type="admin" />
-            </div>
-        </div>
-    @endif
+    @include('_nav-admin')
     <div class="nav-primary">
         <div class="main-container">
             <ul class="nav-list">
@@ -26,7 +20,8 @@
                     <button class='nav-link nav-dropdown-btn'  
                             onclick="toggleDropdown()">Ostali
                     </button>
-                    <ul class='nav-dropdown-list display-dropdown' id="nav-dropdown">
+                    <ul class='nav-dropdown-list display-dropdown' 
+                        id="nav-dropdown">
                         @foreach ($towns as $index => $town)
                             @if($index > 4)
                                 <li class="nav-item">

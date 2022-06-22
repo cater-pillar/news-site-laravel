@@ -1,6 +1,6 @@
 @props(['comment'])
 <li class="comment-user">
-    <x-edit-delete :id="$comment->id" 
+    <x-edit-delete :link_id="$comment->id" 
                    :user_id="$comment->user->id" 
                    link="comments"/>
     <img src="../images/user.png" alt="user"/>

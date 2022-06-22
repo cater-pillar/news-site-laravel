@@ -68,21 +68,21 @@ class ArticleController extends Controller
         return redirect('/')->with('success', 'Uspešno ste objavili vest');
     }
 
-    public function destroy($id) {
-        Article::destroy($id);
+    public function destroy($slug) {
+        Article::where('slug', $slug)->first()->delete();
         return back()->with('success', 'Vest izbrisana!');
     }
 
-    public function edit($id) {
+    public function edit($slug) {
         
         return view('edit-article', [
             'towns' => cache('towns'),
             'categories' => cache('categories'),
-            'article' => Article::with('category', 'towns')->find($id)
+            'article' => Article::with('category', 'towns')->where('slug', $slug)->first()
         ]);
     }
 
-    public function update($id) {
+    public function update($slug) {
 
         $town_ids = $this->getTownIds();
        
@@ -94,7 +94,7 @@ class ArticleController extends Controller
            'body' => ['required']
        ]);
         
-        $article = Article::find($id);
+        $article = Article::where('slug', $slug)->first();
         $article->towns()->sync($town_ids);
         if(request()->file('photo')) {
             $article->photo = request()->file('photo')->store('images');

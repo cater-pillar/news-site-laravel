@@ -3,7 +3,7 @@
         {{ "Ažuriranje vesti" }}
     </x-slot>
 
-<form action={{ url("article/$article->id/update")}} 
+<form action={{ url("article/$article->slug/update")}} 
       method="post" enctype="multipart/form-data" 
       class="login-form">
       @csrf

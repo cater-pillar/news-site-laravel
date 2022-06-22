@@ -19,11 +19,25 @@ use App\Http\Controllers\CommentController;
 
 Route::get('/', [ArticleController::class, 'index']);
 
+Route::get('/article/create', [ArticleController::class, 'create'])->middleware('admin');
+
+Route::post('/article/store', [ArticleController::class, 'store'])->middleware('admin');
+
 Route::get('/article/{slug}', [ArticleController::class, 'show']);
 
-Route::get('/create', [ArticleController::class, 'create'])->middleware('admin');
+Route::post('/article/{slug}/destroy', [ArticleController::class, 'destroy'])->middleware('admin');
 
-Route::post('/store', [ArticleController::class, 'store'])->middleware('admin');
+Route::get('/article/{slug}/edit', [ArticleController::class, 'edit'])->middleware('admin');
+
+Route::post('/article/{slug}/update', [ArticleController::class, 'update'])->middleware('admin');
+
+Route::post('/article/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
+
+Route::post('/comments/{id}/destroy', [CommentController::class, 'destroy'])->middleware('auth');
+
+Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->middleware('auth');
+
+Route::post('/comments/{id}/update', [CommentController::class, 'update'])->middleware('auth');
 
 Route::post('/register/store', [UserController::class, 'store'])->middleware('guest');
 
@@ -35,18 +49,8 @@ Route::post('/login/store', [SessionController::class, 'store'])->middleware('gu
 
 Route::get('/login/create', [SessionController::class, 'create'])->middleware('guest');
 
-Route::post('/article/{id}/comments', [CommentController::class, 'store'])->middleware('auth');
 
-Route::post('/comments/{id}/destroy', [CommentController::class, 'destroy'])->middleware('auth');
 
-Route::get('/comments/{id}/edit', [CommentController::class, 'edit'])->middleware('auth');
 
-Route::post('/comments/{id}/update', [CommentController::class, 'update'])->middleware('auth');
-
-Route::post('/article/{id}/destroy', [ArticleController::class, 'destroy'])->middleware('admin');
-
-Route::get('/article/{id}/edit', [ArticleController::class, 'edit'])->middleware('admin');
-
-Route::post('/article/{id}/update', [ArticleController::class, 'update'])->middleware('admin');
 
 

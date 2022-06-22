@@ -2,7 +2,7 @@
     <x-slot:title>
         {{ "Dodaj novu vest" }}
     </x-slot>
-        <form action="store" 
+        <form action="/article/store" 
             method="post" enctype="multipart/form-data" 
             class="login-form">
             @csrf

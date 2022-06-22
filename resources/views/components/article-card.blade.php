@@ -6,7 +6,7 @@
 <div class="{{$type}}-body">
     <div>
         {{ $article->category->name }}
-        <x-edit-delete :id="$article->id" link="article"/>
+        <x-edit-delete :link_id="$article->slug" link="article"/>
     </div>
     <h1>
         <a class="title-color" 
