@@ -78,7 +78,8 @@ class ArticleController extends Controller
         return view('edit-article', [
             'towns' => cache('towns'),
             'categories' => cache('categories'),
-            'article' => Article::with('category', 'towns')->where('slug', $slug)->first()
+            'article' => Article::with('category', 'towns')
+                         ->where('slug', $slug)->first()
         ]);
     }
 

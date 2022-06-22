@@ -10,7 +10,7 @@
                 @foreach ($towns as $index => $town)
                     @if($index < 5)
                         <li class="nav-item">
-                            <a href='/?town={{ $town->id }}' 
+                            <a href='/?town={{ $town->slug }}' 
                             class='nav-link'>
                             {{ $town->name }} </a>
                         </li>
@@ -25,7 +25,7 @@
                         @foreach ($towns as $index => $town)
                             @if($index > 4)
                                 <li class="nav-item">
-                                    <a href='/?town={{ $town->id }}' 
+                                    <a href='/?town={{ $town->slug }}' 
                                     class='nav-dropdown-link'>
                                     {{ $town->name }} </a>
                                 </li>
@@ -41,7 +41,7 @@
         <ul class="nav-list">
             @foreach ($categories as $category)
                 <li class="nav-item">
-                    <a href="/?category={{ $category->id }}" 
+                    <a href="/?category={{ $category->slug }}" 
                         class='nav-link'>
                     {{ $category->name }}</a>
                 </li>

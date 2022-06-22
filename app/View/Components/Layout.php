@@ -26,11 +26,11 @@ class Layout extends Component
     public function render()
     {
         
-        cache()->rememberForever('categories', function() {
+        $categories = cache()->rememberForever('categories', function() {
             return Category::all();
         });
 
-        cache()->rememberForever('towns', function() {
+        $towns = cache()->rememberForever('towns', function() {
             return Town::all();
         });
 
@@ -39,15 +39,15 @@ class Layout extends Component
             $add_to_title = "Pretraga";
         }
         if(request('category')) {
-            $add_to_title = cache('categories')->firstWhere('id', request('category'))->name;
+            $add_to_title = $categories->firstWhere('slug', request('category'))->name;
         }
         if(request('town')) {
-            $add_to_title = cache('towns')->firstWhere('id', request('town'))->name;
+            $add_to_title = $towns->firstWhere('slug', request('town'))->name;
         }
 
         return view('components.layout', [
-            'categories' => cache('categories'),
-            'towns' => cache('towns'),
+            'categories' => $categories,
+            'towns' => $towns,
             'add_to_title' => $add_to_title,
         ]);
     }

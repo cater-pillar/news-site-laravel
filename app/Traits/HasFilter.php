@@ -11,12 +11,14 @@ trait HasFilter {
         }
 
         if (request('category')) {
-            $articles->where('category_id', request('category'));
+            $articles->whereHas('category', function($query) {
+                return $query->where('slug', request('category'));
+            });
         }
 
         if (request('town')) {
             $articles->whereHas('towns', function($query) {
-                return $query->where('town_id', '=', request('town'));
+                return $query->where('slug', request('town'));
             });
         }
 
