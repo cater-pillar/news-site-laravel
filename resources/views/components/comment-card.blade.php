@@ -9,7 +9,7 @@
              {{ $comment->user->name }} 
         </h3>
         <span>
-            {{ $comment->created_at->diffForHumans() }}
+            {{ $comment->created_at->format("H:i, d.m.Y") }}
         </span>
         <p>
             {{ $comment->body }}

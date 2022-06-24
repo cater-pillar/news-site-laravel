@@ -4,6 +4,7 @@ namespace App\Traits;
 trait HasFilter {
 
     public function filter($articles) {
+        
         if (request('search')) {
             $articles->where('title', 'like', '%'.request('search').'%')
                     ->orWhere('extract', 'like', '%'.request('search').'%')

@@ -248,16 +248,13 @@ footer {
     width: 100%;
 }
 .single-article-group {
-    width: 100%;
-    
+    width: 100%;   
 }
 .single-article-title {
-    
     font-size: 36px;
     line-height: 42px;
     margin-bottom: 10px;
     font-family: 'Roboto Slab';
-    
 }
 .single-article-abstract {
     font: normal 18px/28px 'Lora';
@@ -269,6 +266,24 @@ footer {
 }
 .single-article-body p {
     margin-bottom: 30px;
+}
+.single-article-info {
+    text-transform: uppercase;
+    font: bold 12px/16px 'Noto Sans';
+    line-height: 1.7em;
+}
+.single-article-date {
+    color: #a5a5a5;
+    font-weight: normal;
+}
+.single-article-category {
+    color: #c24646;
+}
+.single-article-town {
+    margin-right: 5px;
+}
+.location-pin {
+    width: 14px;
 }
 .h-comments {
     font: bold 20px/26px 'Roboto Slab';
