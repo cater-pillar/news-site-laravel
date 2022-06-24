@@ -8,7 +8,7 @@
                     <a href='/' class='nav-link'>NASLOVNA</a>
                 </li>
                 @foreach ($towns as $index => $town)
-                    @if($index < 5)
+                    @if($index < 6)
                         <li class="nav-item">
                             <a href='/?town={{ $town->slug }}' 
                             class='nav-link'>
