@@ -14,3 +14,4 @@ Database migration will generate categories, towns, fake news articles, comments
 
 Users can post, delete and edit their own comments. Admin can create, edit and delete all articles and comments.
 
+![image](https://user-images.githubusercontent.com/49712842/176897572-b1072dbe-595b-41c0-9995-b1915f86cd4d.png)
