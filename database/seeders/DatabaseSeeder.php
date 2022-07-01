@@ -67,6 +67,11 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             UserSeeder::class,
             ArticleSeeder::class,
+            ArticleSeeder::class,
+            ArticleSeeder::class,
+            ArticleSeeder::class,
+            CommentSeeder::class,
+            CommentSeeder::class,
             CommentSeeder::class,
             CommentSeeder::class,
         ]);

@@ -24,7 +24,7 @@ class ArticleController extends Controller
         // how do I cache the articles?
 
         return view('home', [
-            'articles' => $articles->orderBy('created_at', 'DESC')->get()
+            'articles' => $articles->orderBy('created_at', 'desc')->get()
         ]);
     }
 
