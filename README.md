@@ -10,7 +10,7 @@ In order to get a proper path for sample images, create folder **public** in *st
 
 After that, run `php artisan storage:link` command in the terminal.
 
-Database migration will generate categories, towns, fake news articles, comments and users. Also, an admin user will be generated. To login as admin use admin@mail.com and password *password!*.
+Database migration and seeding will generate categories, towns, fake news articles, comments and users. Also, an admin user will be generated. To login as admin use admin@mail.com and password *password!*.
 
 Users can post, delete and edit their own comments. Admin can create, edit and delete all articles and comments.
 
